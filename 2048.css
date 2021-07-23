@@ -1,0 +1,150 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    background-color: #faf8ef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.MainContainer{
+    height: 60rem;
+    width: 80rem;
+    background-color: #faf8ef;
+}
+.scoreContainerBox{
+    height: 5rem;
+    width: 40rem;
+    margin-left: 21rem;
+    background-color: #faf8ef;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #776e65;
+    
+}
+.restart{
+    height: 5rem;
+    width: 80rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 3rem;
+    color: #776e65;
+}
+.grid{
+    height: 50rem;
+    width: 80rem;
+    background-color: #faf8ef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #776e65;
+}
+.NAME{
+    font-size: 3rem;
+    font-weight: bold;
+}
+.mainGrid{
+    height:40rem ;
+    width: 40rem;
+    background-color: #bbada0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 1rem;
+}
+.cell{
+    height: 8.5rem;
+    width: 8.5rem;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    font-weight: bold;
+    /* box-shadow: -2px 2px 8px 4px black; */
+    border-radius: 1rem;
+    background-color: rgba(238,228,218,.35);
+
+}
+.ScoreContainer,.highScoreContainer{
+    height: 4rem;
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+.highScoreContainer{
+    width: 25rem;
+}
+.score,.highScoreCounter{
+    margin-left: 0.5rem;
+}
+
+.gameover{
+    height: 23rem;
+    width: 38rem;
+    position: fixed;
+    top: 20rem;
+    left: 41rem;
+    background-color: #bbada0;
+}
+.GAMEOVER{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 2rem;
+    color: #776e65;
+
+    font-weight: bold;
+}
+.sCORE{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #776e65;
+    font-weight: bold;
+
+}
+.g{
+    animation: wordBounce 1s infinite ease-in-out;
+    position: relative;
+}
+.a{
+    animation: WordBounce 1s infinite;
+    position: relative;
+}
+@keyframes wordBounce {
+    0%,100%{
+        
+        top: 0rem;
+    }
+    50%{
+        top: 4rem;
+    }
+    
+}
+@keyframes WordBounce {
+    0%,100%{
+        
+        top: 0rem;
+    }
+    50%{
+        top: -4rem;
+    }
+    
+}
+
