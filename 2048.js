@@ -1,3 +1,7 @@
+//===================================================== javaScript =================================================================
+
+// Getting all the required Selectors ============================================================================================== 
+
 let MainGRid = document.querySelector(".mainGrid");
 let board = [
     0, 0, 0, 0,
@@ -8,7 +12,12 @@ let board = [
 let currentScore = 0;
 let restart = document.querySelector(".restart");
 
+//===================================================================================================================================
+//===================================================== AddEventListners ============================================================
+//===================================================================================================================================
+
 createCell();
+//Restart-Button
 restart.addEventListener("click", function () {
     board = [
         0, 0, 0, 0,
@@ -19,6 +28,34 @@ restart.addEventListener("click", function () {
     currentScore = 0;
     updateGrid();
 })
+// For Movement-Keys 
+window.addEventListener("keydown", function (e) {
+    for (let i = 0; i < 16; i++) {
+        let address = document.querySelector(`[data-address="${i}"]`);
+        board[i] = parseInt(address.innerHTML);
+    }
+
+    if (e.key == "ArrowDown") {
+        keyDown();
+    }
+    if (e.key == "ArrowRight") {
+        keyRight()
+    }
+    if (e.key == "ArrowLeft") {
+        keyLeft();
+    }
+    if (e.key == "ArrowUp") {
+        keyUp();
+    }
+    updateGrid();
+    randomGenerator();
+});
+
+//===================================================================================================================================
+//===================================================== Required Functions ==========================================================
+//===================================================================================================================================
+
+//To create Cell on UI
 function createCell() {
     for (let i = 0; i < 16; i++) {
         let Box = document.createElement("div");
@@ -29,6 +66,7 @@ function createCell() {
         MainGRid.append(Box);
     }
 }
+//After movements of cell we need new cells.
 function randomGenerator() {
     let idx1 = Math.floor(Math.random() * 16);
     let idx2 = Math.floor(Math.random() * 16);
@@ -56,27 +94,7 @@ function randomGenerator() {
         }
     }
 }
-window.addEventListener("keydown", function (e) {
-    for (let i = 0; i < 16; i++) {
-        let address = document.querySelector(`[data-address="${i}"]`);
-        board[i] = parseInt(address.innerHTML);
-    }
-
-    if (e.key == "ArrowDown") {
-        keyDown();
-    }
-    if (e.key == "ArrowRight") {
-        keyRight()
-    }
-    if (e.key == "ArrowLeft") {
-        keyLeft();
-    }
-    if (e.key == "ArrowUp") {
-        keyUp();
-    }
-    updateGrid();
-    randomGenerator();
-});
+//Function to update the grid after every keyDown
 function updateGrid() {
     for (let i = 0; i < 16; i++) {
         let address = document.querySelector(`[data-address="${i}"]`);
@@ -131,6 +149,7 @@ function updateGrid() {
     gameOVER();
 
 }
+//Function to show if Game is Over 
 function gameOVER() {
     let zeroContain = false;;
     for (let i = 0; i < 16; i++) {
@@ -166,6 +185,7 @@ function gameOVER() {
         }
     }
 }
+//Helping function for gameOver
 function chkGameOver(board) {
     let change = false;
     for (let i = 0; i < board.length; i++) {
@@ -198,6 +218,7 @@ function chkGameOver(board) {
     }
     return change;
 }
+//Helping function for updateGrid If you press Down Key
 function keyDown() {
     for (let i = 0; i < 4; i++) {
         //Merging all like
@@ -267,9 +288,10 @@ function keyDown() {
         }
     }
 }
+//Helping function for updateGrid If you press Right Key
 function keyRight() {
     for (let i = 0; i < 4; i++) {
-
+        //Merging all like
         if (board[3 + i * 4] == board[2 + i * 4] && board[3 + i * 4] != 0) {
             currentScore += board[3 + i * 4]
             board[3 + i * 4] += board[2 + i * 4]
@@ -316,7 +338,7 @@ function keyRight() {
             board[1 + i * 4] += board[0 + i * 4]
             board[0 + i * 4] = 0
         }
-
+        //Removing Zero and shifting
         for (let j = 0; j < 3; j++) {
             if (board[i * 4 + 3] == 0) {
                 board[i * 4 + 3] = board[i * 4 + 2]
@@ -336,8 +358,10 @@ function keyRight() {
         }
     }
 }
+//Helping function for updateGrid If you press Left Key
 function keyLeft() {
     for (let i = 0; i < 4; i++) {
+        //Merging all like
         if (board[0 + i * 4] == board[1 + i * 4] && board[0 + i * 4] != 0) {
             currentScore += board[0 + i * 4]
             board[0 + i * 4] += board[1 + i * 4]
@@ -404,6 +428,7 @@ function keyLeft() {
         }
     }
 }
+//Helping function for updateGrid If you press Up Key
 function keyUp() {
     for (let i = 0; i < 4; i++) {
         //Merging all like
@@ -474,3 +499,4 @@ function keyUp() {
     }
 }
 
+//===================================================== Thank You ==========================================================
