@@ -11,6 +11,8 @@ let board = [
 ];
 let currentScore = 0;
 let restart = document.querySelector(".restart");
+let grid=document.querySelector(".grid")
+let resVis=false;
 
 //===================================================================================================================================
 //===================================================== AddEventListners ============================================================
@@ -19,6 +21,13 @@ let restart = document.querySelector(".restart");
 createCell();
 //Restart-Button
 restart.addEventListener("click", function () {
+    if(resVis==true){
+        let doc=document.querySelectorAll(".gameover");
+        for(let i=0;i<doc.length;i++){
+            doc[i].remove();
+        }
+        
+    }
     board = [
         0, 0, 0, 0,
         0, 0, 0, 0,
@@ -180,6 +189,7 @@ function gameOVER() {
             <div class="ScOrE">${currentScore}</div>
         </div>`
 
+        resVis=true;
             MainGRid.append(gameOver);
 
         }
